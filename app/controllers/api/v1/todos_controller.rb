@@ -28,7 +28,8 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def destroy
-    if todo.destroy(params[:id])
+    todo = Todo.find(params[:id])
+    if todo.destroy
       head :no_content
     else
       render json: { error: "Failed to destroy"}, status: 422
@@ -36,6 +37,7 @@ class Api::V1::TodosController < ApplicationController
   end
 
   def destroy_all
+    todo = Todo.all
     if todo.destroy_all
       head :no_content
     else

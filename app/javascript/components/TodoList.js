@@ -76,7 +76,6 @@ function TodoList() {
     axios
       .get('/api/v1/todos.json')
       .then((resp) => {
-        console.log(resp.data);
         setTodos(resp.data);
       })
       .catch((e) => {
